@@ -37,7 +37,7 @@ export default function Header() {
   const { itemCount, setIsOpen: setCartOpen } = useCart();
   const { itemCount: wishlistCount } = useWishlist();
   const searchRef = useRef<HTMLInputElement>(null);
-  const shopTimeoutRef = useRef<NodeJS.Timeout>();
+  const shopTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -113,7 +113,7 @@ export default function Header() {
                   className="relative"
                   onMouseEnter={() => {
                     if (link.label === 'Shop') {
-                      clearTimeout(shopTimeoutRef.current);
+                      if (shopTimeoutRef.current) clearTimeout(shopTimeoutRef.current);
                       setShopHover(true);
                     }
                   }}

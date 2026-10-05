@@ -128,17 +128,17 @@ export default function ProductPage() {
 
               {/* Badges */}
               <div className="absolute top-4 left-4 flex flex-col gap-2">
-                {product.is_new && <span className="badge badge-new">New</span>}
-                {product.is_bestseller && <span className="badge badge-bestseller">Bestseller</span>}
+                {(product as any).is_new && <span className="badge badge-new">New</span>}
+                {(product as any).is_bestseller && <span className="badge badge-bestseller">Bestseller</span>}
                 {product.stock === 0 && <span className="badge badge-sold-out">Sold Out</span>}
-                {product.stock > 0 && product.stock <= (product.low_stock_threshold || 5) && <span className="badge badge-low-stock">Low Stock</span>}
+                {product.stock > 0 && product.stock <= ((product as any).low_stock_threshold || 5) && <span className="badge badge-low-stock">Low Stock</span>}
               </div>
             </div>
 
             {/* Thumbnails */}
             {product.images.length > 1 && (
               <div className="flex gap-3">
-                {product.images.map((_, i) => (
+                {product.images.map((_: any, i: number) => (
                   <button
                     key={i}
                     onClick={() => setSelectedImage(i)}
@@ -169,13 +169,13 @@ export default function ProductPage() {
               <span className="text-2xl font-semibold text-brand-dark">
                 {formatPrice(product.price)}
               </span>
-              {product.compare_at_price && (
+              {(product as any).compare_at_price && (
                 <>
                   <span className="text-lg text-neutral-400 line-through">
-                    {formatPrice(product.compare_at_price)}
+                    {formatPrice((product as any).compare_at_price)}
                   </span>
                   <span className="badge badge-sale">
-                    Save {formatPrice(product.compare_at_price - product.price)}
+                    Save {formatPrice((product as any).compare_at_price - product.price)}
                   </span>
                 </>
               )}
@@ -215,7 +215,7 @@ export default function ProductPage() {
                   )}
                 </h3>
                 <div className="flex gap-3">
-                  {product.variations.map(v => (
+                  {product.variations.map((v: any) => (
                     <button
                       key={v.id}
                       onClick={() => setSelectedVariation(v)}

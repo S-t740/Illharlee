@@ -24,7 +24,7 @@ const priceRanges = [
   { label: 'KSh 1,500+', min: 1500, max: Infinity },
 ];
 
-export default function ShopPage() {
+function ShopContent() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get('category') || 'all';
   const initialSearch = searchParams.get('search') || '';
@@ -368,5 +368,13 @@ export default function ShopPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ShopPage() {
+  return (
+    <React.Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <ShopContent />
+    </React.Suspense>
   );
 }

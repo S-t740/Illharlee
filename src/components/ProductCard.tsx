@@ -58,10 +58,10 @@ export default function ProductCard({ product, variant = 'default' }: ProductCar
 
         {/* Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-20 pointer-events-none">
-          {product.is_new && <span className="badge badge-new">New</span>}
-          {product.is_bestseller && <span className="badge badge-bestseller">Bestseller</span>}
+          {(product as any).is_new && <span className="badge badge-new">New</span>}
+          {(product as any).is_bestseller && <span className="badge badge-bestseller">Bestseller</span>}
           {product.stock === 0 && <span className="badge badge-sold-out">Sold Out</span>}
-          {product.stock > 0 && product.stock <= (product.low_stock_threshold || 5) && <span className="badge badge-low-stock">Low Stock</span>}
+          {product.stock > 0 && product.stock <= ((product as any).low_stock_threshold || 5) && <span className="badge badge-low-stock">Low Stock</span>}
         </div>
       </div>
 
@@ -94,9 +94,9 @@ export default function ProductCard({ product, variant = 'default' }: ProductCar
           <span className="text-sm font-semibold text-brand-dark">
             {formatPrice(product.price)}
           </span>
-          {product.compare_at_price && (
+          {(product as any).compare_at_price && (
             <span className="text-xs text-neutral-400 line-through">
-              {formatPrice(product.compare_at_price)}
+              {formatPrice((product as any).compare_at_price)}
             </span>
           )}
         </div>
