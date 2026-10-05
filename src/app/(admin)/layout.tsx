@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { LayoutDashboard, ShoppingBag, Package, Settings, LogOut, Tags, Sparkles, Grid } from 'lucide-react';
-import '../globals.css';
 
 export const metadata = {
   title: 'Admin Dashboard - Illharlee',
@@ -10,8 +9,7 @@ export const metadata = {
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="antialiased font-body bg-neutral-50 text-brand-black">
+    <div className="bg-neutral-50 text-brand-black">
         <div className="min-h-screen flex">
           {/* Sidebar */}
           <aside className="w-64 bg-white border-r border-neutral-200 flex flex-col hidden md:flex">
@@ -58,7 +56,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             {children}
           </main>
         </div>
-      </body>
-    </html>
+    </div>
   );
 }
