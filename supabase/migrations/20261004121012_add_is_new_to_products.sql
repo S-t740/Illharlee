@@ -1,0 +1,2 @@
+ALTER TABLE products ADD COLUMN IF NOT EXISTS is_new BOOLEAN NOT NULL DEFAULT true;
+ALTER TABLE products ALTER COLUMN id SET DEFAULT gen_random_uuid()::text;
