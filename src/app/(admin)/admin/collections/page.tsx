@@ -106,10 +106,10 @@ export default function AdminCollections() {
   if (loading) return <div className="p-8">Loading collections...</div>;
 
   return (
-    <div className="flex-1 overflow-auto p-8 bg-neutral-50 min-h-screen">
-      <div className="mb-8 flex justify-between items-center">
+    <div className="flex-1 overflow-auto p-4 sm:p-6 md:p-8 bg-neutral-50 min-h-screen">
+      <div className="mb-6 md:mb-8 flex flex-col sm:flex-row justify-between sm:items-center gap-4">
         <div>
-          <h1 className="font-heading text-3xl mb-2">Curated Collections</h1>
+          <h1 className="font-heading text-2xl sm:text-3xl mb-2">Curated Collections</h1>
           <p className="text-neutral-500 text-sm">Manage collections for the "Shop by Aesthetic" section.</p>
         </div>
         {!isAdding && (

@@ -52,9 +52,9 @@ export default function MerchandisingModule() {
   if (loading) return <div className="p-8">Loading merchandising...</div>;
 
   return (
-    <div className="flex-1 overflow-auto p-8 bg-neutral-50 min-h-screen">
-      <div className="mb-8">
-        <h1 className="font-heading text-3xl mb-2">Merchandising & Offers</h1>
+    <div className="flex-1 overflow-auto p-4 sm:p-6 md:p-8 bg-neutral-50 min-h-screen">
+      <div className="mb-6 md:mb-8">
+        <h1 className="font-heading text-2xl sm:text-3xl mb-2">Merchandising & Offers</h1>
         <p className="text-neutral-500 text-sm">Quickly update Bestsellers, New Arrivals, and special Offers across your store.</p>
       </div>
 

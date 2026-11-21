@@ -28,9 +28,9 @@ export default async function AdminDashboard() {
   const outOfStock = safeProducts.filter(p => p.stock === 0).length;
 
   return (
-    <div className="flex-1 overflow-auto p-8">
-      <div className="mb-8">
-        <h1 className="font-heading text-3xl mb-2">Dashboard Overview</h1>
+    <div className="flex-1 overflow-auto p-4 sm:p-6 md:p-8">
+      <div className="mb-6 md:mb-8">
+        <h1 className="font-heading text-2xl sm:text-3xl mb-2">Dashboard Overview</h1>
         <p className="text-neutral-500 text-sm">Welcome back. Here's what's happening today.</p>
       </div>
 

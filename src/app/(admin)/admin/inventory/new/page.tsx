@@ -117,18 +117,18 @@ export default function NewProduct() {
   };
 
   return (
-    <div className="flex-1 overflow-auto p-8 bg-neutral-50 min-h-screen">
+    <div className="flex-1 overflow-auto p-4 sm:p-6 md:p-8 bg-neutral-50 min-h-screen">
       <div className="max-w-3xl mx-auto">
         <button 
           onClick={() => router.back()}
-          className="flex items-center gap-2 text-sm text-neutral-500 hover:text-brand-black mb-6 transition-colors"
+          className="flex items-center gap-2 text-sm text-neutral-500 hover:text-brand-black mb-4 sm:mb-6 transition-colors"
         >
           <ArrowLeft size={16} /> Back to Inventory
         </button>
 
-        <h1 className="font-heading text-3xl mb-8">Add New Product</h1>
+        <h1 className="font-heading text-2xl sm:text-3xl mb-6 md:mb-8">Add New Product</h1>
 
-        <form onSubmit={handleSubmit} className="bg-white border border-neutral-200 rounded-xl p-8 shadow-sm space-y-6">
+        <form onSubmit={handleSubmit} className="bg-white border border-neutral-200 rounded-xl p-4 sm:p-6 md:p-8 shadow-sm space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-xs uppercase tracking-wider text-neutral-500 mb-2">Product Name</label>

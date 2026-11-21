@@ -57,10 +57,10 @@ export default function AdminInventory() {
   if (loading) return <div className="p-8">Loading inventory...</div>;
 
   return (
-    <div className="flex-1 overflow-auto p-8 bg-neutral-50 min-h-screen">
-      <div className="mb-8 flex justify-between items-center">
+    <div className="flex-1 overflow-auto p-4 sm:p-6 md:p-8 bg-neutral-50 min-h-screen">
+      <div className="mb-6 md:mb-8 flex flex-col sm:flex-row justify-between sm:items-center gap-4">
         <div>
-          <h1 className="font-heading text-3xl mb-2">Inventory</h1>
+          <h1 className="font-heading text-2xl sm:text-3xl mb-2">Inventory</h1>
           <p className="text-neutral-500 text-sm">Manage products and stock levels.</p>
         </div>
         <Link href="/admin/inventory/new" className="bg-brand-black text-white px-6 py-3 text-xs uppercase tracking-wider hover:bg-brand-gold hover:text-brand-black transition-colors">
