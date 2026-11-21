@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
 import {
   LayoutDashboard,
   ShoppingBag,
@@ -29,6 +30,8 @@ const navLinks = [
 export default function AdminMobileNav() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+  const { signOut, user } = useAuth();
 
   // Close menu on route change
   useEffect(() => {
@@ -46,6 +49,12 @@ export default function AdminMobileNav() {
       document.body.style.overflow = '';
     };
   }, [isOpen]);
+
+  const handleSignOut = async () => {
+    setIsOpen(false);
+    await signOut();
+    router.push('/admin/login');
+  };
 
   return (
     <div className="md:hidden">
@@ -108,12 +117,17 @@ export default function AdminMobileNav() {
         </nav>
 
         <div className="p-3 pt-0 border-t border-neutral-100 mt-1">
-          <Link
-            href="/"
+          {user && (
+            <p className="text-[10px] text-neutral-400 truncate px-4 py-2">
+              {user.email}
+            </p>
+          )}
+          <button
+            onClick={handleSignOut}
             className="flex items-center gap-3 px-4 py-3.5 w-full rounded-lg text-sm text-neutral-600 hover:bg-red-50 hover:text-red-600 active:bg-red-100 transition-colors"
           >
-            <LogOut size={18} /> Exit to Store
-          </Link>
+            <LogOut size={18} /> Sign Out
+          </button>
         </div>
       </div>
     </div>

@@ -2,7 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
 import {
   LayoutDashboard,
   ShoppingBag,
@@ -26,6 +27,13 @@ const navLinks = [
 
 export default function AdminSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { signOut, user } = useAuth();
+
+  const handleSignOut = async () => {
+    await signOut();
+    router.push('/admin/login');
+  };
 
   return (
     <aside className="w-64 bg-white border-r border-neutral-200 flex-col hidden md:flex">
@@ -62,12 +70,17 @@ export default function AdminSidebar() {
       </nav>
 
       <div className="p-4 border-t border-neutral-200">
-        <Link
-          href="/"
+        {user && (
+          <p className="text-[10px] text-neutral-400 truncate px-4 mb-2" title={user.email}>
+            {user.email}
+          </p>
+        )}
+        <button
+          onClick={handleSignOut}
           className="flex items-center gap-3 px-4 py-3 w-full rounded-lg text-sm text-neutral-600 hover:bg-red-50 hover:text-red-600 transition-colors"
         >
-          <LogOut size={18} /> Exit to Store
-        </Link>
+          <LogOut size={18} /> Sign Out
+        </button>
       </div>
     </aside>
   );
